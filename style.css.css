@@ -1,0 +1,90 @@
+/* ===== Colores y base (cambia aquí los colores de toda la página) ===== */
+:root{
+  --bg:#EEF4F7;      /* fondo */
+  --card:#ffffff;    /* tarjetas */
+  --ink:#112A3A;     /* texto y fondo oscuro */
+  --mute:#52697a;    /* texto secundario */
+  --line:#cfdde6;    /* bordes */
+  --acc:#FF5A1F;     /* naranja de botones */
+  --hi:#C8F169;      /* verde lima de resaltes */
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px} /* deja espacio por el menú fijo */
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+[hidden]{display:none!important}
+h1{font-size:clamp(2rem,8vw,3.4rem);line-height:1.05;margin:0 0 14px;font-weight:800;letter-spacing:-.03em}
+h2{font-size:clamp(1.6rem,5vw,2.2rem);margin:0 0 14px;font-weight:800;letter-spacing:-.02em}
+h3{margin:6px 0;font-size:1.1rem}
+p{margin:0 0 12px}
+mark{background:var(--hi);color:var(--ink);padding:0 .12em;border-radius:6px}
+.wrap{max-width:960px;margin:0 auto;padding:40px 16px}
+.lead{color:var(--mute);max-width:60ch;font-size:1.05rem}
+
+/* ===== Registro ===== */
+#registro{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+.form{width:100%;max-width:560px}
+fieldset{border:0;padding:0;margin:0 0 18px}
+legend,.t{font-weight:700;display:block;margin-bottom:8px;padding:0}
+small{font-weight:400;color:var(--mute)}
+.campo{margin-bottom:18px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;inset:0}
+.opts span{display:block;padding:10px 18px;border:2px solid var(--line);border-radius:999px;transition:.2s}
+.opts input:checked+span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opts input:focus-visible+span{outline:3px solid var(--acc);outline-offset:2px}
+input[type=text],input[type=email]{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit}
+input[type=text]:focus,input[type=email]:focus{outline:3px solid var(--acc);outline-offset:1px;border-color:var(--acc)}
+.err{color:#c62a1a;font-size:.9rem;margin:6px 0 0;min-height:1.2em}
+
+/* ===== Botones ===== */
+.btn,.timer{display:inline-block;font:inherit;font-weight:800;background:var(--acc);color:#fff;border:0;border-radius:12px;padding:13px 24px;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover,.timer:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(255,90,31,.35)}
+.btn:focus-visible,.timer:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.form .btn{width:100%}
+.timer{padding:9px 16px;margin-top:6px;background:var(--ink)}
+
+/* ===== Menú superior ===== */
+.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;background:var(--ink);padding:10px 16px}
+.logo{color:var(--hi);font-weight:800;text-decoration:none;white-space:nowrap}
+.nav nav{display:flex;gap:4px;overflow-x:auto} /* en celular el menú se desliza */
+.nav nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:999px;white-space:nowrap;font-size:.95rem;transition:background .2s}
+.nav nav a:hover{background:rgba(255,255,255,.15)}
+
+/* ===== Inicio ===== */
+.hero{background:var(--ink);color:#fff}
+.hero-in{display:grid;gap:24px;align-items:center;padding-top:48px;padding-bottom:48px}
+.hero mark{display:inline}
+.hero p{color:#c9d8e2;font-size:1.1rem;max-width:44ch}
+.hero svg{width:min(260px,70%);justify-self:center}
+@media(min-width:720px){.hero-in{grid-template-columns:1.3fr 1fr}}
+
+/* ===== Tarjetas ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .25s,box-shadow .25s}
+.grid .card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(17,42,58,.12)}
+.ico{font-size:2rem;display:block}
+.card p{color:var(--mute);margin-bottom:6px}
+
+/* ===== Plan personal ===== */
+.chip{display:inline-block;background:var(--hi);font-weight:800;font-size:1.3rem;padding:4px 14px;border-radius:10px;margin-bottom:10px}
+ul.ex{list-style:none;padding:0;margin:10px 0}
+ul.ex li{padding:10px 0;border-top:1px solid var(--line)}
+ul.ex b{display:block}
+.aviso{font-size:.9rem;border-left:4px solid var(--acc);padding-left:10px}
+
+/* ===== Encuesta ===== */
+.bar{margin-bottom:16px}
+.bar p{margin:0 0 4px;color:var(--ink)}
+.track{height:14px;background:var(--bg);border-radius:999px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--acc);border-radius:999px;transition:width 1.2s ease}
+.bar b{font-size:.95rem}
+.analisis{margin-top:16px}
+
+/* ===== Pie de página ===== */
+footer{background:var(--ink);color:#c9d8e2;text-align:center;padding:28px 16px}
+footer p{margin:4px 0}
+footer b{color:var(--hi)}
+
+/* Si la persona prefiere menos movimiento, se quitan las animaciones */
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

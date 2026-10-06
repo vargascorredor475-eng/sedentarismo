@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><!-- hace que se vea bien en celular -->
+<title>Sedentarismo: muévete por tu salud</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ REGISTRO (es lo primero que se ve) ============ -->
+<section id="registro">
+  <form id="f" class="card form" novalidate>
+    <h1>Regístrate para empezar</h1>
+
+    <fieldset>
+      <legend>¿Eres estudiante o profesor?</legend>
+      <div class="opts">
+        <label><input type="radio" name="rol" value="estudiante" checked><span>Estudiante</span></label>
+        <label><input type="radio" name="rol" value="profesor"><span>Profesor</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>¿Qué correo vas a usar?</legend>
+      <div class="opts">
+        <label><input type="radio" name="tipo" value="colegio" checked><span>Del colegio</span></label>
+        <label><input type="radio" name="tipo" value="personal"><span>Personal</span></label>
+      </div>
+    </fieldset>
+
+    <div class="campo">
+      <label class="t" for="correo">Correo electrónico</label>
+      <input type="email" id="correo" autocomplete="email" placeholder="nombre@colegio.edu.co">
+      <p class="err" id="e-correo" role="alert"></p>
+    </div>
+
+    <div class="campo">
+      <label class="t" for="nombre">Nombre <small>(opcional)</small></label>
+      <input type="text" id="nombre" autocomplete="name">
+    </div>
+
+    <!-- Solo estudiantes -->
+    <div class="campo" id="campo-grado">
+      <label class="t" for="grado">Grado <small>(obligatorio)</small></label>
+      <input type="text" id="grado" placeholder="Ejemplo: 9° o 10-B">
+      <p class="err" id="e-grado" role="alert"></p>
+    </div>
+
+    <!-- Estudiantes y profesores -->
+    <div class="campo">
+      <label class="t" for="edad">Edad <small id="edad-nota">(obligatorio)</small></label>
+      <input type="text" id="edad" inputmode="numeric" maxlength="2" placeholder="Ejemplo: 15">
+      <p class="err" id="e-edad" role="alert"></p>
+    </div>
+
+    <!-- Solo profesores -->
+    <div id="campos-prof" hidden>
+      <div class="campo">
+        <label class="t" for="asignatura">Asignatura que dictas <small>(opcional)</small></label>
+        <input type="text" id="asignatura" placeholder="Ejemplo: Matemáticas">
+      </div>
+      <div class="campo">
+        <label class="t" for="problema">¿Presentas un problema que te impida hacer ejercicio? <small>(opcional)</small></label>
+        <input type="text" id="problema" placeholder="Ejemplo: dolor de rodilla (o escribe «ninguno»)">
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Registrarme</button>
+  </form>
+</section>
+
+<!-- ============ SITIO PRINCIPAL (aparece después de registrarse) ============ -->
+<div id="sitio" hidden>
+
+  <!-- Menú superior -->
+  <header class="nav">
+    <a href="#inicio" class="logo">🏃 Muévete</a>
+    <nav>
+      <a href="#tu-plan">Tu plan</a>
+      <a href="#que-es">¿Qué es?</a>
+      <a href="#causas">Causas</a>
+      <a href="#consecuencias">Consecuencias</a>
+      <a href="#prevenir">Prevenir</a>
+      <a href="#encuesta">Encuesta</a>
+      <a href="#pausas">Pausas activas</a>
+      <a href="#conclusion">Conclusión</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. INICIO -->
+    <section id="inicio" class="hero">
+      <div class="wrap hero-in">
+        <div>
+          <h1>Sedentarismo: <mark>muévete por tu salud</mark></h1>
+          <p>Cada paso cuenta. Moverte un poco más hoy te da energía, ánimo y salud para mañana.</p>
+          <a href="#que-es" class="btn">Conoce más</a>
+        </div>
+        <!-- Ilustración: persona corriendo -->
+        <svg viewBox="0 0 240 240" role="img" aria-label="Persona corriendo">
+          <circle cx="120" cy="120" r="110" fill="#C8F169"/>
+          <circle cx="140" cy="62" r="16" fill="#112A3A"/>
+          <path d="M132 82 L112 128 L84 150 M112 128 L136 150 L132 186 M128 94 L158 112 L178 96 M126 96 L98 104 L84 84" stroke="#112A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M30 205 H210" stroke="#FF5A1F" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Plan personal según el registro (lo llena script.js) -->
+    <section id="tu-plan" class="wrap">
+      <h2 id="plan-titulo"></h2>
+      <div class="card">
+        <span class="chip" id="plan-meta"></span>
+        <p id="plan-info"></p>
+        <ul class="ex" id="plan-ej"></ul>
+        <p class="aviso" id="plan-aviso"></p>
+      </div>
+    </section>
+
+    <!-- 2. ¿QUÉ ES? -->
+    <section id="que-es" class="wrap">
+      <h2>¿Qué es el sedentarismo?</h2>
+      <p class="lead">Es un estilo de vida en el que pasamos casi todo el día sentados o acostados y nos movemos muy poco. No es una enfermedad, pero con el tiempo puede afectar el cuerpo y el ánimo.</p>
+    </section>
+
+    <!-- 3. CAUSAS -->
+    <section id="causas" class="wrap">
+      <h2>Causas</h2>
+      <div class="grid">
+        <article class="card"><span class="ico">📱</span><h3>Dispositivos electrónicos</h3><p>Celulares, computadores y videojuegos nos mantienen quietos por horas.</p></article>
+        <article class="card"><span class="ico">🛋️</span><h3>Poca actividad física</h3><p>Si no hacemos ejercicio, el cuerpo se acostumbra a moverse poco.</p></article>
+        <article class="card"><span class="ico">🪑</span><h3>Estar sentado mucho tiempo</h3><p>Clases, tareas y trabajo implican muchas horas en una silla.</p></article>
+        <article class="card"><span class="ico">⏰</span><h3>Falta de tiempo</h3><p>Entre estudio y obligaciones, el ejercicio se deja para después.</p></article>
+        <article class="card"><span class="ico">🎬</span><h3>Actividades pasivas</h3><p>Preferir series o redes sociales antes que jugar o salir a caminar.</p></article>
+      </div>
+    </section>
+
+    <!-- 4. CONSECUENCIAS -->
+    <section id="consecuencias" class="wrap">
+      <h2>Consecuencias</h2>
+      <div class="grid">
+        <article class="card"><span class="ico">📉</span><h3>Menor condición física</h3><p>Te cansas más rápido al correr, subir escaleras o jugar.</p></article>
+        <article class="card"><span class="ico">😴</span><h3>Cansancio</h3><p>Moverse poco puede dejarte sin energía durante el día.</p></article>
+        <article class="card"><span class="ico">🦴</span><h3>Menor movilidad</h3><p>Los músculos y las articulaciones se ponen rígidos.</p></article>
+        <article class="card"><span class="ico">❤️</span><h3>Salud a largo plazo</h3><p>Si dura mucho tiempo, se relaciona con problemas de salud.</p></article>
+        <article class="card"><span class="ico">🌙</span><h3>Sueño y bienestar</h3><p>Puede afectar cómo duermes y cómo te sientes.</p></article>
+      </div>
+    </section>
+
+    <!-- 5. ¿CÓMO PREVENIRLO? -->
+    <section id="prevenir" class="wrap">
+      <h2>¿Cómo prevenirlo?</h2>
+      <div class="grid">
+        <article class="card"><span class="ico">🧍</span><h3>Levántate</h3><p>Muévete después de estar sentado un buen rato.</p></article>
+        <article class="card"><span class="ico">🚶</span><h3>Camina</h3><p>Hazlo siempre que puedas: al colegio, al descanso, a casa.</p></article>
+        <article class="card"><span class="ico">⚽</span><h3>Practica un deporte</h3><p>Elige uno que te guste para que sea constante.</p></article>
+        <article class="card"><span class="ico">🤸</span><h3>Haz pausas activas</h3><p>Pausas cortas mientras estudias.</p></article>
+        <article class="card"><span class="ico">⏳</span><h3>Reduce lo sedentario</h3><p>Baja el tiempo de pantallas y sofá.</p></article>
+        <article class="card"><span class="ico">🎯</span><h3>Recréate en movimiento</h3><p>Baila, juega, monta bicicleta con tus amigos.</p></article>
+      </div>
+    </section>
+
+    <!-- 6. ENCUESTA -->
+    <section id="encuesta" class="wrap">
+      <h2>¿Qué dicen nuestros estudiantes?</h2>
+      <p class="lead">Resultados de una encuesta a 30 personas.</p>
+      <div class="card" id="barras">
+        <!-- data-v es el porcentaje; script.js anima el ancho de cada barra -->
+        <div class="bar" data-v="86.7"><p>Reconoce que la actividad física es importante para la salud</p><div class="track"><i></i></div><b>86,7 %</b></div>
+        <div class="bar" data-v="63.3"><p>Considera que no hace suficiente actividad física en la semana</p><div class="track"><i></i></div><b>63,3 %</b></div>
+        <div class="bar" data-v="46.7"><p>Hace ejercicio en su tiempo libre solo algunas veces</p><div class="track"><i></i></div><b>46,7 %</b></div>
+        <div class="bar" data-v="53.3"><p>Se siente motivado para hacer actividad física</p><div class="track"><i></i></div><b>53,3 %</b></div>
+        <div class="bar" data-v="46.7"><p>No se siente motivado para hacer actividad física</p><div class="track"><i></i></div><b>46,7 %</b></div>
+        <div class="bar" data-v="51.7"><p>Hace pausas activas solo algunas veces</p><div class="track"><i></i></div><b>51,7 %</b></div>
+      </div>
+      <div class="card analisis">
+        <h3>Análisis de los resultados</h3>
+        <p>Los resultados muestran hábitos relacionados con el sedentarismo. Una parte importante de los participantes permanece sentada durante largos períodos y usa dispositivos electrónicos más de dos horas al día.</p>
+        <p>Aunque la mayoría reconoce que la actividad física es importante (86,7 %), el 63,3 % considera que no hace suficiente en la semana, y el 46,7 % hace ejercicio en su tiempo libre solo algunas veces. Además, el 53,3 % se siente motivado y el 46,7 % no, y el 51,7 % hace pausas activas solo algunas veces.</p>
+        <p>En general, destacan la permanencia prolongada sentado, el uso frecuente de dispositivos y la percepción de poca actividad física. Esta información se usará para interpretar la situación estudiada y establecer conclusiones según los objetivos de la investigación.</p>
+      </div>
+    </section>
+
+    <!-- 7. PAUSAS ACTIVAS (cada botón inicia un contador de 30 segundos) -->
+    <section id="pausas" class="wrap">
+      <h2>Pausas activas</h2>
+      <p class="lead">Ejercicios sencillos para hacer mientras estudias. Toca el botón y sigue el tiempo.</p>
+      <div class="grid">
+        <article class="card"><span class="ico">💪</span><h3>Estiramiento de brazos</h3><p>Entrelaza los dedos, estira los brazos al frente y luego hacia arriba. Respira profundo.</p><button class="timer" type="button">Empezar 30 s</button></article>
+        <article class="card"><span class="ico">🙆</span><h3>Movimiento de cuello</h3><p>Inclina la cabeza despacio a un lado y al otro, y gira suave. Sin forzar.</p><button class="timer" type="button">Empezar 30 s</button></article>
+        <article class="card"><span class="ico">🤷</span><h3>Movimiento de hombros</h3><p>Sube los hombros hacia las orejas y haz círculos hacia atrás.</p><button class="timer" type="button">Empezar 30 s</button></article>
+        <article class="card"><span class="ico">🚶</span><h3>Caminar unos minutos</h3><p>Levántate y da una vuelta por el salón, el pasillo o el patio.</p><button class="timer" type="button">Empezar 30 s</button></article>
+        <article class="card"><span class="ico">🦵</span><h3>Estiramiento de piernas</h3><p>De pie, lleva un talón hacia atrás y sostén el pie unos segundos. Cambia de pierna.</p><button class="timer" type="button">Empezar 30 s</button></article>
+      </div>
+    </section>
+
+    <!-- 8. CONCLUSIÓN -->
+    <section id="conclusion" class="wrap">
+      <h2>Conclusión</h2>
+      <p class="lead">El sedentarismo es un hábito que podemos cambiar. Moverte, caminar, hacer pausas activas y practicar deporte mejora tu energía, tu ánimo y tu salud. Empieza con pequeños cambios y mantenlos cada día.</p>
+    </section>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p><b>Proyecto escolar sobre el sedentarismo</b></p>
+    <p>Pequeños cambios pueden ayudarnos a tener una vida más activa.</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
